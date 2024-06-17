@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  
+    .card {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row">
+    <!-- First card (70%) -->
+    <div class="col-md-7 mr-3">
+      @for (order of OrderDetailsList ; track $index){
+        <div class="card">
+          <div class="card-header">
+            Order Details
+          </div>
+          <div class="card-body">
+            <!-- Product image -->
+            <img src="product-image.jpg" class="img-fluid mb-3" alt="Product Image">
+            <!-- Product details -->
+            <p class="mb-1">Product Name:{{order.bookName}}</p>
+            <p class="mb-1">Price: {{order.bookPrice}}</p>
+            <p class="mb-3">Quantity: 1</p>
+          </div>
+           </div>
+           <br>
+           <div class="card">
+            <div class="card-header">
+              Address Detais
+            </div>
+            <div class="card-body">
+              <!-- Adress details -->
+              <p class="mb-1">Name :  {{order.custName}}</p>
+              <p class="mb-1">Phone: {{order.custPhone}}</p>
+              <p class="mb-1">Landmark:{{order.custLandmark}}</p>
+              <p class="mb-1">Address: {{order.custCity}}</p>
+              <p class="mb-1">City: Noida,State</p>
+              <p class="mb-3">Pincode:{{order.custPincode}}</p>
+              <button type="button" class="btn btn-primary mb-2"> Save Order</button>
+            </div>  
+          </div>
+        }
+      </div>
+      
+    <!-- Second card (30%) -->
+    
+    <div class="col-md-4">
+    
+      <div class="card">
+        <div class="card-header">
+          Order Summary
+        </div>
+        <div class="card-body">
+          <!-- Product summary -->
+          <p class="mb-1">Product Name: Example Product</p>
+          <p class="mb-1">Price: $10.00</p>
+          <p class="mb-3">Quantity: 1</p>
+          <p class="mb-3">Quantity: 1</p>
+          <p class="mb-3">Quantity: 1</p>
+          <p class="mb-3">Quantity: 1</p>
+          <!-- Total price -->
+          <hr>
+          <p class="fw-bold">Total: $10.00</p>
+          <button type="button" [routerLink]="['/pay']" class="btn btn-primary mb-2"> Proceed Payments</button>
+        </div>
+      </div>
+      <br>
+        </div>
+    </div>
+</div>
+<br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

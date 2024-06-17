@@ -1,0 +1,25 @@
+/* Custom navbar styles */
+.navbar-custom {
+  background-color: #A1662F !important; /* Custom background color */
+}
+
+/* Custom text color for navbar links */
+.navbar-custom .nav-link {
+  color: white !important; /* Custom text color for links */
+}
+
+.navbar-custom .nav-link:hover {
+  color: #FFD700 !important; /* Optional: custom hover color for links */
+}
+
+.navbar-custom .navbar-brand {
+  color: white !important; /* Custom text color for brand name */
+}
+
+/* Optional: custom styles for the profile picture */
+.profile-picture {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid white;  
+}

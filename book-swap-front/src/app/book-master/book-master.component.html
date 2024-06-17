@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Management</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    
+    .main-container {
+      display: flex;
+      height: calc(100% - 56px); 
+    }
+    .sidebar {
+      width: 200px;
+      min-width: 100px; 
+      min-height: calc(100vh - 135px); 
+      background-color: #28a745; 
+      overflow-y: auto;
+    }
+    .sidebar .parent {
+      padding: 10px;
+      margin-top: 5px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #343a40;
+      text-align: center;
+      display: block;
+      background-color: #ffeeba; /* Parent link color */
+      margin-bottom: 4px;
+      cursor: pointer; /* Change cursor to pointer on hover */
+    }
+    
+    .sidebar a {
+      padding-left: 0px; /* Adjusted padding for child links */
+      display: block; /* Display child links as block */
+    }
+    .sidebar a:hover {
+      background-color:brown; /* Hover color for child links */
+      color: #fff;
+    }
+    .sidebar a.selected {
+      background-color: #fff; 
+      color: #343a40; 
+    }
+    .sub-links {
+      display: none;
+    }
+    .sub-links.active {
+      display: block;
+    }
+    .content {
+      padding: 2px;
+      flex-grow: 1;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <div class="parent" (click)="handleClick('bookMaster')" onmouseover="this.style.cursor='pointer'">
+        <p>Book-Master</p>
+        <div class="sub-links" id="bookMaster">
+          <a [routerLink]='["/master/add-book"]' onclick="event.stopPropagation()">Add Book</a>
+          <a href="#" onclick="event.stopPropagation()">Delete Book</a>
+          <a href="#" onclick="event.stopPropagation()">See Books</a>
+        </div>
+      </div>
+      <div class="parent" (click)="handleClick('userMaster')" onmouseover="this.style.cursor='pointer'">
+        <p>User-Master</p>
+        <div class="sub-links" id="userMaster">
+          <a  onclick="event.stopPropagation()">Add User</a>
+          <a  onclick="event.stopPropagation()">Delete User</a>
+          <a href="#" onclick="event.stopPropagation()">See Users</a>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+    <router-outlet> </router-outlet>
+</div>
+  </div>
+  
+  <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function handleClick(id) {
+      var subLinks = document.getElementById(id);
+      var allSubLinks = document.querySelectorAll('.sub-links');
+      allSubLinks.forEach(function(link) {
+        if (link.id !== id) {
+          link.classList.remove('active');
+        }
+      });
+      subLinks.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

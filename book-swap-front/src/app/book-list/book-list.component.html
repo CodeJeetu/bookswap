@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookstore</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <form class="form-inline my-2 my-lg-0 float-right">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <a class="nav-link float-right"[routerLink]="['/cart-items']"><i class="fas fa-shopping-cart"></i>Cart</a>
+          </div>
+        </div>
+     </div>
+   <div class="container mt-2">
+<div class="row">
+    <!-- book-1 -->
+    @for (list of bookList ; track $index) {
+ <div class="col-md-6">
+  <div class="max-size-card">
+  <!-- <a href="/book-details" class="card mb-3 clickable-card card-link"> -->
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <!-- <img src="../../assets/books/Yugdrishta bhagat Singh.jpeg" class="card-img" alt="Book 1"style="max-width: 100%; height: 260px;"> -->
+        <img [src]="'data:image/jpeg;base64,' + list.imageEncode" class="card-img" alt="Book 1" style="max-width: 100%; height: 260px;">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><a [routerLink]="['/book-info', list.bookId]" class="clickable-card card-link">{{list.bookName}}</a></h5>
+           <!-- <h5 class="card-title ">Company of One</h5> -->
+          <p class="card-text ">Publish date: {{list.publishDate}}</p>
+          <p class="card-text ">Author: {{list.authorName}}</p>
+          <p class="card-text ">Price: ${{list.price}}</p>
+          <p class="text-truncate mb-md-0">
+            {{list.description}}
+          </p>
+          <button class="btn btn-primary mr-2">Add to Cart</button>
+          <button [routerLink]="['/order-book',list.bookId]" class="btn btn-success">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div> 
+}
+ </div>
+</div>
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
